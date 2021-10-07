@@ -3,7 +3,7 @@ import validation from './validation';
 import { useHistory } from "react-router-dom";
 
 
-const SignUpForm = ({submitForm}) => {
+const SForm2 = ({submitForm}) => {
     
     const [values, setValues] = useState({
         username: "",
@@ -120,4 +120,4 @@ const SignUpForm = ({submitForm}) => {
     );
 };
 
-export default SignUpForm;
+export default SForm2;
