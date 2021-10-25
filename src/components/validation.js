@@ -18,7 +18,7 @@ const validation = (values) => {
         errors.password="Password must be at least 6 characters";
     }
     if (!values.password2){
-        errors.password2="Passwords is required";
+        errors.password2="Password is required";
     }
     else if(values.password2 !== values.password){
         errors.password2="Passwords do not mach";

@@ -1,15 +1,10 @@
 import React from 'react'
+import SearchBar from '../components/SearchBar'
 
 const Newsfeed = () => {
     return (
-        <div 
-        style={{
-            display: 'flex', 
-            justifyContent: 'center',
-            alignItems: 'center', 
-            height: '90vh'
-        }}>
-            <h1>Newsfeed</h1>
+        <div>
+        <SearchBar/>
         </div>
     )
 }
