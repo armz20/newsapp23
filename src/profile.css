@@ -1,0 +1,17 @@
+.update{
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+    color: white;
+    text-decoration: underline;
+}
+
+.profilepic {
+    align-items: center;
+    width: 20px;
+}
+
+image {
+    width: 200px;
+    padding: 20px;
+}

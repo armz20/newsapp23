@@ -39,7 +39,7 @@ const SignUpForm = ({submitForm}) => {
 
   function onSubmit(e) {
      e.preventDefault();
-    return fetch('http://127.0.0.1:8000/auth/registration', {
+    return fetch('/auth/registration', {
       method: 'POST',
       credentials: 'omit',
       headers: {

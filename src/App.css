@@ -11,3 +11,7 @@
 body {
   background: linear-gradient(90deg, #5ad8ee, #0b87ec);
 }
+
+.update {
+  font-size: 43;
+}
