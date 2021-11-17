@@ -2,6 +2,7 @@ import React , {useState, useEffect} from 'react'
 import validation from './validation';
 import { useHistory } from "react-router-dom";
 
+
 const SignUpForm = ({submitForm}) => {
 
 
@@ -116,6 +117,8 @@ const SignUpForm = ({submitForm}) => {
                         <button type className="submit">Sign Up</button>
                     </div>
                 </form>
+                <br></br>
+                <p className='link1'>Already have an account? Log in</p>
             </div>
         </div>
   );

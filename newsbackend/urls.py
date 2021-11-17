@@ -26,9 +26,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration', include('dj_rest_auth.registration.urls')),
-    path('auth/registration', include('dj_rest_auth.registration.urls')),
-    path('reset_password/', auth_views.PasswordResetView.as_view()),
+    path('auth/registration', include('dj_rest_auth.registration.urls')), 
+    path('reset_password/',
+     auth_views.PasswordResetView.as_view(),
+     name="reset_password"), 
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
 
-    
 ]
+urlpatterns += [ re_path(r'^(?:.*)/?$', TemplateView.as_view(template_name="index.html")) ]
+
 

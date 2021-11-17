@@ -47,14 +47,14 @@ const SForm2 = ({submitForm}) => {
 
   function onSubmit(e) {
      e.preventDefault();
-    return fetch('http://127.0.0.1:8000/auth/registration', {
+    return fetch('auth/registration', {
       method: 'POST',
       credentials: 'omit',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body:  JSON.stringify()
+      body:  JSON.stringify(values.username, values.email, values.password, values.password2)
     }).then(resp => resp.json()).then(data => {
       changeResponse(data)
     }).catch(error => console.log('error ->', error))

@@ -81,3 +81,7 @@ button:active {
   min-width: 350px;
   color: #000000;
 }
+
+.link1 p {
+  color: white;
+}

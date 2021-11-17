@@ -43,20 +43,21 @@ const LoginForm = ({submitForm}) => {
 
     const [ resp, changeResponse ] = useState(null);
     const [ username, changeUsername ] =  useState('');
-    const [ password1, changePassword ] =  useState('');
+    const [ password, changePassword ] =  useState('');
 
   function onSubmit(e) {
      e.preventDefault();
-    return fetch('auth/login', {
+    return fetch('/auth/login/', {
       method: 'POST',
-      credentials: 'omit',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body:  JSON.stringify({username, password1})
+      body:  JSON.stringify({username, password})
     }).then(resp => resp.json()).then(data => {
       changeResponse(data)
+      console.log(data)
+      console.log('hello')
     }).catch(error => console.log('error ->', error))
     
   }
@@ -64,13 +65,15 @@ const LoginForm = ({submitForm}) => {
         <Redirect to="./LoginSuccess"></Redirect>
   }
 
+  
+
     return (
         <div className="container">
             <div className="app-wrapper">
                 <div>
                 <h2 className="title">Welcome Back</h2>
                 </div>
-                <form className="form-wrapper">
+                <form className="form-wrapper" onSubmit={onSubmit}>
                     <div className="name">
                         <label className="label">Username</label>
                         <input 
@@ -88,7 +91,7 @@ const LoginForm = ({submitForm}) => {
                             className="input" 
                             type="password" 
                             name="password" 
-                            value={password1} 
+                            value={password} 
                             onChange={(e) => changePassword(e.target.value)} 
                             
                             />
