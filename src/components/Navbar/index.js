@@ -1,7 +1,16 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from "./NavbarElements"
+import { useState, useEffect } from 'react'
 
 const Navbar = () => {
+
+    const [signin, setSignin] = useState("Sign In");
+    const [signedIn, setSignedIn] = useState(false);
+    useEffect(() => {
+        localStorage.getItem("token") ? setSignin("Sign Out") : setSignin("Sign In");
+        localStorage.getItem("token") ? setSignedIn(true) : setSignedIn(false);
+    }, [signin]);
+
     return (
         <>
             <Nav>
@@ -19,7 +28,8 @@ const Navbar = () => {
                     <NavLink to="/signup" activeStyle>
                         Sign Up 
                     </NavLink>
-                    <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                    {signedIn ? <NavBtnLink to="/signin">{signin}</NavBtnLink> : <NavBtnLink to="/signin">{signin}</NavBtnLink>}
+                    
                 </NavMenu>
                 {/*<NavBtn>
                     <NavBtnLink to="/signin">Sign In</NavBtnLink>

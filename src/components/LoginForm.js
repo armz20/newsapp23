@@ -6,12 +6,13 @@ import Newsfeed from '../pages';
 import Profile from '../pages/profile';
 import LoginSuccess from './LoginSuccess';
 import { Redirect } from 'react-router';
-
-
+import Cookies from 'js-cookie';
 
 
 const LoginForm = ({submitForm}) => {
     const history = useHistory(); 
+    const csrftoken = Cookies.get('csrftoken')
+
     
     const [values, setValues] = useState({
         username: "",
@@ -44,6 +45,8 @@ const LoginForm = ({submitForm}) => {
     const [ resp, changeResponse ] = useState(null);
     const [ username, changeUsername ] =  useState('');
     const [ password, changePassword ] =  useState('');
+    const [error, setError] = useState('');
+    const [errorExists, setErrorExists] = useState(false);
 
   function onSubmit(e) {
      e.preventDefault();
@@ -52,6 +55,7 @@ const LoginForm = ({submitForm}) => {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'X-CSRFToken':csrftoken,
       },
       body:  JSON.stringify({username, password})
     }).then(resp => resp.json()).then(data => {
@@ -60,6 +64,17 @@ const LoginForm = ({submitForm}) => {
       console.log('hello')
     }).catch(error => console.log('error ->', error))
     
+  }
+  if(resp) { 
+      if('key' in resp) {
+        localStorage.setItem('token', resp.key);
+        history.push('/newsfeed');
+        localStorage.setItem('username', username);
+      }
+    //   if('non_field_errors' in resp) {
+    //     setErrorExists(true);
+    //     setError(resp.non_field_errors[0]);
+    //   }
   }
   const handleLogin = (event) => {
         <Redirect to="./LoginSuccess"></Redirect>
@@ -73,6 +88,7 @@ const LoginForm = ({submitForm}) => {
                 <div>
                 <h2 className="title">Welcome Back</h2>
                 </div>
+                {errorExists && <div className="error">{error}</div>}
                 <form className="form-wrapper" onSubmit={onSubmit}>
                     <div className="name">
                         <label className="label">Username</label>
