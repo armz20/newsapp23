@@ -18,7 +18,7 @@ const ShowNews = (props) => {
 
 
 const UserList = () => {
-
+    
     var getUserId = function() {
         return localStorage.getItem('id');
     }

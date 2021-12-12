@@ -16,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Newsfeed} />
         <Route path="/newsfeed" exact component={Newsfeed} />
+        <Route path="/api/register/" />
         <Route path="/signup" exact component={SignUp} />
         <Route path="/signin" exact component={SignIn} />
         <Route path="/profile" exact component={Profile} />

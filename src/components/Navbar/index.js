@@ -4,8 +4,12 @@ import { useState, useEffect } from 'react'
 import Cookies from 'js-cookie';
 import { useHistory } from 'react-router';
 const Navbar = () => {
-
     const history = useHistory();
+    const rld = () => {
+        history.push("/api/register/")
+        window.location.reload()
+    }
+
     const [signin, setSignin] = useState("Sign In");
     const [signedIn, setSignedIn] = useState(false);
     useEffect(() => {
@@ -39,7 +43,7 @@ const Navbar = () => {
                     <NavLink to="/profile" activeStyle> 
                         Profile
                     </NavLink> 
-                    <NavLink to="/signup" activeStyle>
+                    <NavLink to="/api/register/" onClick={()=>rld()} activeStyle>
                         Sign Up 
                     </NavLink>
                     {signedIn ? <NavBtnLink to="/signin">{signin}</NavBtnLink> : <NavBtnLink to="/signin">{signin}</NavBtnLink>}
