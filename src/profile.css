@@ -23,3 +23,44 @@ a{
     margin-top: 50px;
     text-align: center;
 }
+
+.logoutbtn {
+    font-size: 23px;
+    padding: 17px;
+}
+
+.prefbtn {
+    font-size: 23px;
+    padding: 17px;
+    background-color: black;
+    color: white;
+}
+.titlelink 
+{
+    color: black;
+    background-color:transparent;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.notify {
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+}
+
+.followedusers{
+    padding: 20px;
+    font-size: 15px;
+    color: black;
+    margin-left: 150px;
+
+}
+
+.followtitle {
+    padding: 20px;
+    color: white;
+    font-size: 30px;
+    margin-left: 150px;
+}

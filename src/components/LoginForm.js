@@ -117,6 +117,8 @@ const LoginForm = ({submitForm}) => {
                         <button className="submit">Sign In</button>
                     </div>
                 </form>
+                <br></br><br></br>
+                <p align="center"className='link1'>Don't have an account? Create one!</p>
             </div>
         </div>
     );

@@ -7,6 +7,8 @@ import SignUp from './pages/signup';
 import SignIn from './pages/signin';
 import Profile from './pages/profile';
 import Login from './pages/login';
+import Results from './search/Results';
+import Preferences from './components/Preferences';
 function App() {
   return (
     <Router>
@@ -17,6 +19,10 @@ function App() {
         <Route path="/signup" exact component={SignUp} />
         <Route path="/signin" exact component={SignIn} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/preferences" exact component={Preferences} />
+        <Route path="/results" exact component={() => <Results />} />
+        <Route path="/results/:id" exact component={() => <Results />} />
+
         </Switch>
     </Router>
   );

@@ -47,7 +47,7 @@ const SForm2 = ({submitForm}) => {
 
   function onSubmit(e) {
      e.preventDefault();
-    return fetch('auth/registration', {
+    return fetch('http://127.0.0.1:8000/auth/registration', {
       method: 'POST',
       credentials: 'omit',
       headers: {

@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 const SignUpForm = ({submitForm}) => {
 
 
+
     const [values, setValues] = useState({
         username: "",
         email: "",
@@ -52,7 +53,6 @@ const SignUpForm = ({submitForm}) => {
       changeResponse(data)
     }).catch(error => console.log('error ->', error))
   }
-
 
   return (
     <div className="container">
@@ -117,8 +117,8 @@ const SignUpForm = ({submitForm}) => {
                         <button type className="submit">Sign Up</button>
                     </div>
                 </form>
-                <br></br>
-                <p className='link1'>Already have an account? Log in</p>
+                <br></br><br></br>
+                <p align="center"className='link1'>Already have an account? Log in</p>
             </div>
         </div>
   );

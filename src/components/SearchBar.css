@@ -25,3 +25,21 @@
   display: grid;
   place-items: center;
 }
+
+.article {
+  margin: auto;
+  width: 75%;
+  border: 3px solid black;
+  padding: 10px;
+  background: rgba(241, 240, 240, 0.925);
+  margin-top: 25px;
+  height: 250px;
+  text-align: justify;
+  border-radius: 10px;
+}
+
+.searchbtn {
+  font-size: 20px;
+  padding: 8px;
+  margin-left: 2px;
+}

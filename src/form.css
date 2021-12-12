@@ -82,6 +82,22 @@ button:active {
   color: #000000;
 }
 
-.link1 p {
+.link1 {
   color: white;
+}
+
+.cathead {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.newsoptions {
+  text-align: center;
+  font-size: 20px;
+  
+}
+
+.chkbox {
+  padding: 50px;
 }
