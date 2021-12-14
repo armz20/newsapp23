@@ -5,8 +5,18 @@ import Cookies from 'js-cookie';
 import { useHistory } from 'react-router';
 const Navbar = () => {
     const history = useHistory();
-    const rld = () => {
-        history.push("/api/register/")
+    // const redirect = () => {
+    //     // history.push("http://127.0.0.1:8000/api/register/")
+    //     window.location.reload()
+    // }
+    const redirect = () => {
+        window.location.href = 'http://localhost:8000/api/register/';
+        // maybe can add spinner while loading
+        return null;
+      }
+
+    const rldlog = () => {
+        history.push("/api/login/")
         window.location.reload()
     }
 
@@ -16,6 +26,13 @@ const Navbar = () => {
         localStorage.getItem("token") ? setSignin("Sign Out") : setSignin("Sign In");
         localStorage.getItem("token") ? setSignedIn(true) : setSignedIn(false);
     }, [signin]);
+
+    const [signup, setSignup] = useState("Sign Up");
+    const [signedUp, setSignedUp] = useState(false);
+    useEffect(() => {
+        localStorage.getItem("username") ? setSignup(localStorage.getItem("username")) : setSignin("Sign Up");
+        localStorage.getItem("username") ? setSignedUp(true) : setSignedUp(false);
+    }, [signup]);
 
     const logout = () => {
         const csrftoken = Cookies.get('csrftoken');
@@ -43,10 +60,11 @@ const Navbar = () => {
                     <NavLink to="/profile" activeStyle> 
                         Profile
                     </NavLink> 
-                    <NavLink to="/api/register/" onClick={()=>rld()} activeStyle>
+                    {signedUp ? <NavBtnLink to="/profile" activeStyle onClick={() => redirect()}>{signup}</NavBtnLink> : <NavBtnLink to="/profile" activeStyle onClick={() => redirect()}>{signup}</NavBtnLink>}
+                    {/* <NavLink to="/api/register" onClick={() => redirect()} activeStyle>
                         Sign Up 
-                    </NavLink>
-                    {signedIn ? <NavBtnLink to="/signin">{signin}</NavBtnLink> : <NavBtnLink to="/signin">{signin}</NavBtnLink>}
+                    </NavLink> */}
+                    {signedIn ? <NavBtnLink to="/signin" >{signin}</NavBtnLink> : <NavBtnLink to="/signin" >{signin}</NavBtnLink>}
                     {/* {signedIn ? <NavBtnLink onClick={()=>logout()}>{signin}</NavBtnLink>: <NavBtnLink to="/signin">{signin}</NavBtnLink>} */}
 
                 </NavMenu>

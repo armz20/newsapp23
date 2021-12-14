@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Newsfeed from '../pages';
 import Profile from '../pages/profile';
-import LoginSuccess from './LoginSuccess';
 import { Redirect } from 'react-router';
 import Cookies from 'js-cookie';
 
@@ -12,6 +11,7 @@ import Cookies from 'js-cookie';
 const LoginForm = ({submitForm}) => {
     const history = useHistory(); 
     const csrftoken = Cookies.get('csrftoken')
+    var resp_message = ''
 
     
     const [values, setValues] = useState({
@@ -69,15 +69,21 @@ const LoginForm = ({submitForm}) => {
       if('key' in resp) {
         localStorage.setItem('token', resp.key);
         history.push('/newsfeed');
+        window.location.reload();
         localStorage.setItem('username', username);
       }
+      else {
+          resp_message=Object.values(resp)
+          if(resp_message == 'This field may not be blank.'){
+              resp_message = 'Must include "username" and "password".'
+
+          }
+      }
+  
     //   if('non_field_errors' in resp) {
     //     setErrorExists(true);
     //     setError(resp.non_field_errors[0]);
     //   }
-  }
-  const handleLogin = (event) => {
-        <Redirect to="./LoginSuccess"></Redirect>
   }
 
   
@@ -113,12 +119,15 @@ const LoginForm = ({submitForm}) => {
                             />
                             {errors.password && <p className="error">{errors.password}</p>}
                     </div>
+                    {resp &&
+                    <div className='errormsg'>{resp_message}</div>}
+                    <br></br><br></br>
                     <div>
                         <button className="submit">Sign In</button>
                     </div>
                 </form>
                 <br></br><br></br>
-                <p align="center"className='link1'>Don't have an account? Create one!</p>
+                <p align="center"className='link1'>Don't have an account? <a className='link2' href='/api/register/'>Sign Up</a></p>
             </div>
         </div>
     );

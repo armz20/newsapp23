@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom';
+import '../profile.css';
+
+
 
 
 class ProfileHeader extends Component {
@@ -33,7 +36,7 @@ class ProfileHeader extends Component {
             <span> {this.state.name} </span>
             }
             {this.state.page !== "profile" &&
-            <span> <button className="user-button" onClick={() => this.redirect("profile/"+this.state.id)}>{this.state.name}</button> </span>
+            <span> <p className="user-button">{this.state.name}</p> </span>
             }
             
 

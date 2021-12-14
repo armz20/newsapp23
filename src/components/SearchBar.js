@@ -27,9 +27,10 @@ const ShowNews = (props) => {
     const {articleObj} = props;
     console.log(articleObj)
     return (
+        
 
         <div style={{textAlign: "center"}}
-        >
+            >
             <h2 align="center" padding="20px"><a className={"titlelink"} href={articleObj.url}>{articleObj.title}</a></h2>
             <img width="50%" height="50%" src={articleObj.urlToImage}/><br></br><br></br>
         </div>

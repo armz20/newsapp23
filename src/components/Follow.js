@@ -4,12 +4,13 @@ import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Cookies from 'js-cookie';
 import UserProfile from "./UserProfile";
+import '../form.css';
 
 const Follow = ( {id} ) => {
   const [users, setUsers] = useState([]);
   const [follow, setFollow] = useState(false);
   const [followText, setFollowText] = useState("Follow");
-  const url = `/api/follow/byuser/${UserProfile.getUserId()}/`;
+  const url = `http://localhost:8000/api/follow/byuser/${localStorage.getItem("id")}/`;
     useEffect(() => {
         getData();
     }, []);
@@ -19,7 +20,6 @@ const Follow = ( {id} ) => {
       setUsers(result.data);
       checkUser(result.data)
     };
-
     
     const checkUser = (data) => {
         for(var index = 0; index < data.length; index++){
@@ -49,6 +49,7 @@ const Follow = ( {id} ) => {
                 getData();         
             })
         .catch(err => console.log(err))
+        window.location.reload()
     }
 
     const handleUnfollow = ( id ) => {
@@ -65,10 +66,12 @@ const Follow = ( {id} ) => {
                 getData();
             })
         .catch(err => console.log(err))
+        window.location.reload()
+
     }
     return (
         <span>
-            {follow ? <button onClick={()=>handleUnfollow(id)}>{followText}</button> : <button onClick={()=>handleFollow(id)}>{followText}</button>}
+            {follow ? <button className="followbtn" onClick={()=>handleUnfollow(id)}>{followText}</button> : <button className="followbtn" onClick={()=>handleFollow(id)}>{followText}</button>}
         </span>
     )
 }

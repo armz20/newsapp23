@@ -13,18 +13,19 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #7abecc !important;
+			background: linear-gradient(90deg, #5ad8ee, #0b87ec);
 		}
 		.user_card {
-			width: 350px;
-			margin-top: auto;
+			width: 400px;
+  			height: 500px;
+			margin-top: 50px;
 			margin-bottom: auto;
-			background: #74cfbf;
+			background: white;
 			position: relative;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
-			padding: 10px;
+			padding: 20px;
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -34,15 +35,36 @@
 
 		.form_container {
 			margin-top: 20px;
+			width: 350px;
+  			height: 400px;
+			  justify-content: center;
+
 		}
 
 		#form-title{
-			color: #fff;
+			color: black;
 		}
 		.login_btn {
 			width: 100%;
-			background: #33ccff !important;
+			height: 65px;
+			background: black !important;
 			color: white !important;
+			display: flex;
+  			text-transform: uppercase;
+  			font-size: 20px;
+  			border-radius: 25px;
+  			color: white;
+  			padding: 10px 60px;
+  			background: linear-gradient(to right, #000000, #000000);
+  			box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  			margin: auto;
+  			outline: none;
+  			border: none;
+  			cursor: pointer;
+  			transition: all 0.1s;
+			text-align: center;
+
+			
 		}
 		.login_btn:focus {
 			box-shadow: none !important;
@@ -50,9 +72,10 @@
 		}
 		.login_container {
 			padding: 0 2rem;
+			text-align: center;
 		}
 		.input-group-text {
-			background: #f7ba5b !important;
+			background: silver !important;
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;
@@ -63,15 +86,47 @@
 			outline: 0px !important;
 		}
 
+		.btn {
+			padding: 20px;
+			margin-top: 20px;
+			margin-left: 20px;
+			background: black;		
+			color: white;
+			text-align: center;
+		}
+		.link1 {
+  			color: black;
+  			background: none;
+  			padding: 0px;
+  			font-size: 20px;
+		}
+		.link2 {
+  			color: black;
+  			background: none;
+  			padding: 0px;
+  			font-size: 20px;
+			color: blue;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: none;
+			color: blue;
+		}
+
+
+		
+
 	</style>
 
 </head>
 <body>
+	
+	<button class="btn" onclick="window.location.href='/newsfeed';">Back</button>
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
-					<h3 id="form-title">Sign Up</h3>
+					<h3 id="form-title">Get Started</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
 
@@ -103,13 +158,21 @@
 							</div>
 							{{form.password2}}
 						</div>
-
+							{% for message in messages %} 
+                    			<p id='messages'>{{message}}</p>
+                			{% endfor %}
+						<br><br>
+						{{form.errors}}
 				   		<div class="d-flex justify-content-center mt-3 login_container">
-				 			<input class="btn login_btn" type="submit" value="Register Account">
+				 			<input class="btn login_btn" type="submit" value="Sign Up">
 				   		</div>
+						   <br>
+
+						   <p class='link1'>Already have an account? <a class='link2' href='/signin'>Log in</a></p>
+
 					</form>
+
 				</div>
-                {{form.errors}}
 			</div>
 		</div>
 	</div>
@@ -132,15 +195,3 @@
 	</script>
 </body>
 </html>
-
-
-
-
-
-<h1>Signup</h1>
-<form method="post" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Sign Up">
-</form>
-

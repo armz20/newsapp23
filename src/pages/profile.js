@@ -18,7 +18,9 @@ const Profile = () => {
                 'Content-Type':'application/json',
                 'X-CSRFToken':csrftoken,
               }, 
-          }).then(resp => resp.json()).then(localStorage.clear(), history.push('/'));
+          }).then(resp => resp.json()).then(localStorage.clear(), history.push('/'), window.location.reload()
+          );
+          
         
     }
 
@@ -46,7 +48,7 @@ const Profile = () => {
                 </div>
                 <div className="options">
                     <a href="http://127.0.0.1:8000/reset_password/" className="update"> Reset password</a>
-                    <a href="http://127.0.0.1:8000/reset_password/" className="update"> Update profile</a>
+                    <a href="http://127.0.0.1:8000/update_user/" className="update"> Update profile</a>
                     <button className="prefbtn" onClick={()=>preferences()}>Customize your newsfeed</button>
                 <button className="logoutbtn" onClick={()=>logout()}> Logout</button>
                 <br></br><br></br><br></br>

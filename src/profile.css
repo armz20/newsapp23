@@ -64,3 +64,15 @@ a{
     font-size: 30px;
     margin-left: 150px;
 }
+
+.users {
+    font-size: 40px;
+    margin-top: 10px;
+    padding: 20px;
+
+}
+
+.user-button {
+    font-size: 25px;
+    color: black;
+}

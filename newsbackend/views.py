@@ -16,4 +16,4 @@ def registerPage(request):
     
     context = {'form':form}
     return render(request, 'signup.html', context)
-    
+

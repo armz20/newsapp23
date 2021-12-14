@@ -39,7 +39,6 @@ function Results() {
 
   function Result() {
     let { id } = useParams();
-    console.log(id? true: false);
 
     if (id) {
       userSearch = true;
@@ -56,16 +55,18 @@ function Results() {
       }
 
       return (
+
         <div className="users">
           
-          Users:
+          Users found:
           <div>
             {users.length > 0 && 
             <div>
               {users.map(function (user, index) {
+                console.log(user[0])
                 return (
                     
-                  <div> <br></br> <ProfileHeader id={user[0]} name={user[1]} page="Results" index={index}/></div>
+                  <div className="users1"> <ProfileHeader id={user[0]} name={user[1]} page="Results" index={index} /><Follow id={user[0]} /></div>
                 )
               })}
             </div>}
@@ -84,7 +85,7 @@ function Results() {
   return (
     <Router>
       <div>
-        <div>
+        <div className="users1">
           <Switch>
             <Route path="/Results/:id" children={<Result />} />
             <Route path="/Results" children={<Result />} />

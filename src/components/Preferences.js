@@ -30,6 +30,7 @@ const Preferences = () => {
             <input type="checkbox" checked={isChecked} onChange={(e)=>{setIsChecked(e.target.checked)}}/><br></br><br></br>
             <label>Technology</label>
             <input type="checkbox" checked={isChecked} onChange={(e)=>{setIsChecked(e.target.checked)}}/><br></br><br></br> */}
+            <button className='followbtn'>Save Changes</button>
             </form>
         </div>
     )
