@@ -1,5 +1,80 @@
-{% block title %}Profile Page{% endblock title %}
+<title>JAM NEWS | Update profile</title>
+<script>
+    const resetlocal = () => {
+
+        localStorage.setItem("username", username)
+
+    }
+</script>
+
+<style>
+	body,
+	html {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		background: linear-gradient(90deg, #5ad8ee, #0b87ec);
+		font-family: 'Sora', sans-serif;
+        align-items: center;
+
+	}
+	
+	.header{
+		text-align: center;
+		font-size: 25px;;
+		padding: 20px;
+		color: black;
+		margin-top: 15px;
+
+	}
+	.header1{
+		text-align: center;
+		font-size: 25px;;
+		padding: 20px;
+		color: rgba(255, 255, 255, 0.815);
+		background: black;
+
+	}
+
+	.resetpass{
+		text-align: center;
+		padding: 10px;
+		color: white;
+		font-size: 20px;
+		text-decoration: none;
+		
+		
+	}
+	.btn {
+			margin-top: 20px;
+			margin-left: 20px;
+			background: black;		
+			color: white;
+			padding: 20px;
+			font-size: 16px;
+		}
+        .form-content{
+            margin-left: 350px;
+            width: 50%;
+            text-align: center;
+            font-size: 22px;
+        }
+        .small {
+            height: 100px;
+            width: 200px;
+        }
+
+        
+
+	
+
+</style>
+
 {% block content %}
+<h3 class="header1">Update profile</h3>
+<button class="btn" onclick="window.location.href='/newsfeed';">Back</button>
+
+
     <div class="row my-3 p-3">
         <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
     </div>
@@ -16,24 +91,17 @@
         </div>
     {% endif %}
     <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" onsubmit="resetlocal()">
             {% csrf_token %}
             <div class="form-row">
                 <div class="col-md-5">
                     <div class="form-group">
                         <label class="small mb-1">Username:</label>
                             {{user_form.username}}
+                            <br><br>
                         <label class="small mb-1">Email:</label>
                             {{user_form.email}}
                     </div>
-                    <div class="form-group">
-                        <a href="#">Change Password</a>
-                        <hr>
-                        <label class="small mb-1">Change Avatar:</label>
-                        {{ profile_form.avatar }}
-                    </div>
-                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
-                </div>
             </div>
             <br><br>
             <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>

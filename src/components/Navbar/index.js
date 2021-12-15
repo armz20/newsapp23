@@ -5,15 +5,24 @@ import Cookies from 'js-cookie';
 import { useHistory } from 'react-router';
 const Navbar = () => {
     const history = useHistory();
-    // const redirect = () => {
-    //     // history.push("http://127.0.0.1:8000/api/register/")
-    //     window.location.reload()
-    // }
     const redirect = () => {
-        window.location.href = 'http://localhost:8000/api/register/';
-        // maybe can add spinner while loading
-        return null;
-      }
+        history.push("/api/register/")
+        window.location.reload()
+    }
+    const redirectp = () => {
+        history.push("/profile")
+        window.location.reload()
+    }
+    // const redirect = () => {
+    //     window.location.href = '127.0.0.1:8000//api/register/';
+    //     // maybe can add spinner while loading
+    //     return null;
+    //   }
+    //   const redirectp = () => {
+    //     window.location.href = '127.0.0.1:8000//profile';
+    //     // maybe can add spinner while loading
+    //     return null;
+    //   } 
 
     const rldlog = () => {
         history.push("/api/login/")
@@ -30,7 +39,7 @@ const Navbar = () => {
     const [signup, setSignup] = useState("Sign Up");
     const [signedUp, setSignedUp] = useState(false);
     useEffect(() => {
-        localStorage.getItem("username") ? setSignup(localStorage.getItem("username")) : setSignin("Sign Up");
+        localStorage.getItem("username") ? setSignup(localStorage.getItem("username")) : setSignup("Sign Up");
         localStorage.getItem("username") ? setSignedUp(true) : setSignedUp(false);
     }, [signup]);
 
@@ -60,7 +69,7 @@ const Navbar = () => {
                     <NavLink to="/profile" activeStyle> 
                         Profile
                     </NavLink> 
-                    {signedUp ? <NavBtnLink to="/profile" activeStyle onClick={() => redirect()}>{signup}</NavBtnLink> : <NavBtnLink to="/profile" activeStyle onClick={() => redirect()}>{signup}</NavBtnLink>}
+                    {signedUp ? <NavLink to="/profile" activestyle1 onClick={() => redirectp()}>{signup}</NavLink> : <NavLink to="/profile"  onClick={() => redirect()}>{signup}</NavLink>}
                     {/* <NavLink to="/api/register" onClick={() => redirect()} activeStyle>
                         Sign Up 
                     </NavLink> */}

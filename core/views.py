@@ -30,27 +30,12 @@ def registerPage(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, "Account was created for " + user)
-            return redirect('login')
     
     context = {'form':form}
     return render(request, 'signup.html', context)
 
 def loginPage(request):
-
-    localStorage = localStoragePy('newsapp', 'json')
-
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
             
-            localStorage.setItem('username', username)
-            return redirect('/newsfeed')
-            
-    
     context = {}
     return render(request, 'signin.html', context)
 

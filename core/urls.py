@@ -15,5 +15,7 @@ urlpatterns = [
     path('searchUser/', SearchUserViewSet.as_view()),
     path('register/', views.registerPage, name="register"),
     path('/signin', views.loginPage, name="login"),
+    path('updateuser/', views.profile, name="updateuser"),
+
 ]
 
