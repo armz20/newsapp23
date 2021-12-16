@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 function loadSearchUser(callback, searchQ) {
   const xhr = new XMLHttpRequest()
   const method = 'GET'
-  const url = 'http://localhost:8000/api/searchUser/?search='+searchQ
+  const url = 'http://localhost:8000/web/searchUser/?search='+searchQ
   const responseType = "json"
   xhr.responseType = responseType
   xhr.open(method, url)

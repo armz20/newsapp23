@@ -24,7 +24,7 @@ const UserList = () => {
     }
     var userID = localStorage.getItem('id');
     const [articles, setArticles] = useState([]) 
-    const url = `/api/follow/byuser/${getUserId()}/`;
+    const url = `/web/follow/byuser/${getUserId()}/`;
     useEffect(() => {
         getNews()
         

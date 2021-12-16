@@ -18,6 +18,14 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from localStoragePy import localStoragePy
 from django.contrib.auth.decorators import login_required
+from newsapi import NewsApiClient
+from django.http import HttpResponse
+import requests 
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
+from django.contrib.auth.models import User
+
 
 
 
@@ -30,6 +38,7 @@ def registerPage(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, "Account was created for " + user)
+            
     
     context = {'form':form}
     return render(request, 'signup.html', context)
@@ -125,3 +134,38 @@ def profile(request):
         user_form = UpdateUserForm(instance=request.user)
 
     return render(request, 'updateuser.html', {'user_form': user_form,})
+
+def index(request):
+      
+    newsapi = NewsApiClient(api_key ='0a1fa78c81c84b9b9427ced0a50bbc85')
+    top = newsapi.get_top_headlines(sources ='techcrunch')
+  
+    l = top['articles']
+    desc =[]
+    news =[]
+    img =[]
+  
+    for i in range(len(l)):
+        f = l[i]
+        news.append(f['title'])
+        desc.append(f['description'])
+        img.append(f['urlToImage'])
+    mylist = zip(news, desc, img)
+  
+    return render(request, 'newsf.html', context ={"mylist":mylist})
+
+def home(request):
+    key= "8bad87c71981425da0e21393fde12aa9"
+    url = ('https://newsapi.org/v2/top-headlines?'
+       'country=us&'
+       'apiKey='+key)
+    response = requests.get(url)
+    res= response.json()
+    res= res['articles']
+    tmp=''
+
+    for i in range (len(res)):
+        tmp+= "<a href='" + res[i]['url'] + "'>" + res[i]['title'] + "</a> <br>By: " + str(res[i]['author'] or 'Unknown') + "<br><br>" + res[i]['description']
+        tmp+= "<br><img src='" + res[i]['urlToImage'] + "' width='300px' /><br>" + str(res[i]['content'] or ' ') + "<br><br>" 
+    
+    return HttpResponse(tmp)

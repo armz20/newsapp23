@@ -14,8 +14,12 @@ urlpatterns = [
     path('', include(router.urls)),
     path('searchUser/', SearchUserViewSet.as_view()),
     path('register/', views.registerPage, name="register"),
-    path('/signin', views.loginPage, name="login"),
+    path('signin/', views.loginPage, name="login"),
     path('updateuser/', views.profile, name="updateuser"),
+    path('newsf/', views.index, name="newsf"),
+
+    
+
 
 ]
 

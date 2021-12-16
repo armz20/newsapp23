@@ -1,49 +1,36 @@
-<title>JAM News | Enter New Password</title>
-
-<style>
-	body,
-	html {
-		margin: 0;
-		padding: 0;
-		height: 100%;
-		background: linear-gradient(90deg, #5ad8ee, #0b87ec);
-		font-family: 'Sora', sans-serif;
-
-	}
-	
-	.header{
-		text-align: center;
-		font-size: 25px;;
-		padding: 20px;
-		color: black;
-		margin-top: 15px;
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JAM News</title>
+    <style>
+    body,
+	  html {
+		  margin: 0;
+		  padding: 0;
+		  height: 100%;
+		  background: linear-gradient(90deg, #5ad8ee, #0b87ec);
+		  font-family: 'Sora', sans-serif;
 
 	}
-	.header1{
+
+  .container {
+    margin: auto;
+    width: 50%;
+    padding: 50px;
+    background-color: white;
+  }
+  .header1{
 		text-align: center;
 		font-size: 25px;;
 		padding: 20px;
 		color: rgba(255, 255, 255, 0.815);
 		background: black;
+    margin-top: 0px;
+    
 
 	}
-
-	.resetpass{
-		text-align: center;
-		padding: 10px;
-		font-size: 20px;
-		
-		
-	}
-	.btn {
-			margin-top: 20px;
-			margin-left: 20px;
-			background: black;		
-			color: white;
-			padding: 20px;
-			font-size: 20px;
-		}
-		.btn {
+  .btn {
     border-radius: 4px;
     background: black;
     padding: 10px 22px;
@@ -151,21 +138,46 @@
 
 }
 
-	
-
-</style>
-
-<div class="menu">
-	<a class="btn" href='/web/newsf/'>Newsfeed</a>
-	 <a class="btn1" href="/profile">Profile</a></div>
 
 
-<p class="header">Please enter your new password twice</p>
 
-<form method="post" class="resetpass">
+    </style>
 
-	{% csrf_token %}
-	{{form}}
-	<input type="Submit" name="Update password">
-	
-</form>
+  
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<!-- Optional theme -->
+  </head>
+  <body>
+  
+    <!-- <h3 class="header1"> -->
+      <!-- <button class="btn" onclick="window.location.href='/profile';">Profile</button>
+
+      <button class="btn" onclick="window.location.href='/signin';">Sign In</button> -->
+     <div class="menu">
+      <a class="btn" href=''>Newsfeed</a>
+       <a class="btn1" href="/profile">Profile</a>
+
+      <a class="btn2" href="/signin">Sign In</a></div>
+
+    
+    <div class="search">
+      <input type="text" placeholder="Enter news topics..."></input>
+     <button class="searchbtn"> Search</button>
+     <br><br>
+    <div class="container">
+      {% for new, des, i in mylist %}
+       <h2>{{ new }}
+              {{ value|linebreaks }}</h2>
+              <img class="artimg" src="{{ i }}" alt="">
+              <br>
+  
+             <p class="description"> {{ des }}
+              {{ value|linebreaks }}</p>
+              <br><br>
+  
+      {% endfor %}
+      <br><br>
+    </div>
+  
+  </body>
+</html>

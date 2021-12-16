@@ -48,7 +48,7 @@ const Profile = () => {
                 </div>
                 <div className="options">
                     <a href="http://127.0.0.1:8000/reset_password/" className="update"> Reset password</a>
-                    <a href="http://127.0.0.1:8000/api/updateuser/" className="update"> Update profile</a>
+                    <a href="http://127.0.0.1:8000/web/updateuser/" className="update"> Update profile</a>
                     <button className="prefbtn" onClick={()=>preferences()}>Customize your newsfeed</button>
                 <button className="logoutbtn" onClick={()=>logout()}> Logout</button>
                 <br></br><br></br><br></br>

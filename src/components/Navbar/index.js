@@ -6,13 +6,18 @@ import { useHistory } from 'react-router';
 const Navbar = () => {
     const history = useHistory();
     const redirect = () => {
-        history.push("/api/register/")
+        history.push("/web/register/")
         window.location.reload()
     }
     const redirectp = () => {
         history.push("/profile")
         window.location.reload()
     }
+    const windowre = () => {
+        history.push('')
+        window.location.reload()
+    }
+
     // const redirect = () => {
     //     window.location.href = '127.0.0.1:8000//api/register/';
     //     // maybe can add spinner while loading
@@ -25,7 +30,7 @@ const Navbar = () => {
     //   } 
 
     const rldlog = () => {
-        history.push("/api/login/")
+        history.push("/web/login/")
         window.location.reload()
     }
 
@@ -51,7 +56,8 @@ const Navbar = () => {
                 'Content-Type':'application/json',
                 'X-CSRFToken':csrftoken,
               }, 
-          }).then(resp => resp.json()).then(localStorage.clear(), setSignin("signin"), history.push('/signin'));
+          }).then(resp => resp.json()).then(localStorage.clear(), setSignin("signin"), history.push('/signin'), window.location.reload());
+
         
     }
 
@@ -63,17 +69,17 @@ const Navbar = () => {
                 </NavLink>
                 <Bars />
                 <NavMenu>
-                    <NavLink to="/newsfeed" activeStyle>
+                    <NavLink to=''  onClick={() => windowre()} >
                         Newsfeed
                     </NavLink> 
-                    <NavLink to="/profile" activeStyle> 
+                    <NavLink to="/profile" > 
                         Profile
                     </NavLink> 
-                    {signedUp ? <NavLink to="/profile" activestyle1 onClick={() => redirectp()}>{signup}</NavLink> : <NavLink to="/profile"  onClick={() => redirect()}>{signup}</NavLink>}
+                    {signedUp ? <NavLink to="/profile"  onClick={() => redirectp()}>{signup}</NavLink> : <NavLink to="/profile"  onClick={() => redirect()}>{signup}</NavLink>}
                     {/* <NavLink to="/api/register" onClick={() => redirect()} activeStyle>
                         Sign Up 
                     </NavLink> */}
-                    {signedIn ? <NavBtnLink to="/signin" >{signin}</NavBtnLink> : <NavBtnLink to="/signin" >{signin}</NavBtnLink>}
+                    {signedIn ? <NavBtnLink to="/signin" onClick={() => logout()} >{signin}</NavBtnLink> : <NavBtnLink to="/signin" >{signin}</NavBtnLink>}
                     {/* {signedIn ? <NavBtnLink onClick={()=>logout()}>{signin}</NavBtnLink>: <NavBtnLink to="/signin">{signin}</NavBtnLink>} */}
 
                 </NavMenu>

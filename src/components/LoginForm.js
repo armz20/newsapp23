@@ -127,7 +127,10 @@ const LoginForm = ({submitForm}) => {
                     </div>
                 </form>
                 <br></br><br></br>
-                <p align="center"className='link1'>Don't have an account? <a className='link2' href='/api/register/'>Sign Up</a></p>
+                <p align="center"className='link1'>Forgot your password? <a className='link2' href='http://127.0.0.1:8000/reset_password/'>Reset it</a></p>
+                <br></br>
+
+                <p align="center"className='link1'>Don't have an account? <a className='link2' href='/web/register/'>Sign up</a></p>
             </div>
         </div>
     );

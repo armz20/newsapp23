@@ -8,7 +8,7 @@ const UserService = () => {
   const [users, setUsers] = useState([]);
   const [follow, setFollow] = useState(false);
   const [followText, setFollowText] = useState("Follow");
-  const url = "/api/users/"
+  const url = "/web/users/"
     useEffect(() => {
         getData();
     }, []);

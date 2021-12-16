@@ -26,7 +26,8 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name = 'index.html')),
+    # path('', TemplateView.as_view(template_name = 'newsf.html')),
+    path('', views.index, name="newsf"),
     path('admin/', admin.site.urls),
     path('auth/', include('dj_rest_auth.urls')),
     path('auth/registration', include('dj_rest_auth.registration.urls')),
@@ -39,7 +40,7 @@ urlpatterns = [
     path('update_user/',
      TemplateView.as_view(template_name = 'updateuser.html'),
      name="update_user"), 
-    path('api/', include('core.urls')),
+    path('web/', include('core.urls')),
     path('register/', views.registerPage, name="register"),
 
 ]

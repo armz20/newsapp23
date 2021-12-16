@@ -10,7 +10,7 @@ const Follow = ( {id} ) => {
   const [users, setUsers] = useState([]);
   const [follow, setFollow] = useState(false);
   const [followText, setFollowText] = useState("Follow");
-  const url = `http://localhost:8000/api/follow/byuser/${localStorage.getItem("id")}/`;
+  const url = `http://localhost:8000/web/follow/byuser/${localStorage.getItem("id")}/`;
     useEffect(() => {
         getData();
     }, []);
@@ -37,7 +37,7 @@ const Follow = ( {id} ) => {
         const csrftoken = Cookies.get('csrftoken')
         let form_data = new FormData();
         form_data.append("followed", id)
-        axios.post("/api/follow/", form_data, {
+        axios.post("/web/follow/", form_data, {
         headers: {
         'Content-Type':'application/json',
         'X-CSRFToken':csrftoken,
@@ -54,7 +54,7 @@ const Follow = ( {id} ) => {
 
     const handleUnfollow = ( id ) => {
         const csrftoken = Cookies.get('csrftoken')
-        axios.delete(`/api/follow/${id}/`, {
+        axios.delete(`/web/follow/${id}/`, {
         headers: {
         'Content-Type':'application/json',
         'X-CSRFToken':csrftoken,
