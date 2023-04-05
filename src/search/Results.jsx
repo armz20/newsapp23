@@ -66,7 +66,7 @@ function Results() {
                 console.log(user[0])
                 return (
                     
-                  <div className="users1"> <ProfileHeader id={user[0]} name={user[1]} page="Results" index={index} /><Follow id={user[0]} /></div>
+                  <div className="users1"> <br></br> <ProfileHeader id={user[0]} name={user[1]} page="Results" index={index} /><Follow id={user[0]} /></div>
                 )
               })}
             </div>}

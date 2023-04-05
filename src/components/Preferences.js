@@ -16,6 +16,8 @@ const Preferences = () => {
             <input type="checkbox" name='science'/>Science<br></br><br></br>
             <input type="checkbox" name='sports'/>Sports<br></br><br></br>
             <input type="checkbox" name='technology'/>Technology<br></br><br></br>
+            <input type="checkbox" name='technology'/>Technology<br></br><br></br>
+            <input type="text" placeholder="Enter keywords..."></input>
             {/* <label>Business</label>
             <input type="checkbox" checked={isChecked} onChange={(e)=>{setIsChecked(e.target.checked)}}/><br></br><br></br>
             <label>Entertainment</label>

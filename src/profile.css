@@ -66,13 +66,25 @@ a{
 }
 
 .users {
-    font-size: 40px;
+    font-size: 30px;
     margin-top: 10px;
     padding: 20px;
+    margin: auto;
+    color: white;
+    width: 50%;
+    margin-bottom: 10px;
+    margin-left: 350px;
+    text-align: center;
 
 }
 
 .user-button {
     font-size: 25px;
-    color: black;
+    color: white;
+    text-align: center;
+
+
+}
+.user1{
+    margin: auto;
 }
